@@ -1,2 +1,2 @@
-# -Nutrition-and-immune-systems
+# Nutrition-and-immune-systems
 This repository is for data science project
