@@ -1,2 +1,16 @@
 # Nutrition-and-immune-systems
 This repository is for data science project
+
+## Installing libraries
+Use Python 3(3.6 or 3.7)
+
+After activating your virtual environment go to ``Notebook`` directory under `Nutrition-and-immune-systems` and type
+```
+pip install -r requirements.txt
+```
+
+## Notes on pushing notebook file in git 
+``Jupyter notebook file creates conflict if push the notbook file with producesd output. To avoid this  clear the output in notbook. ``
+```
+Cell → All Output → Clear → Save
+```
