@@ -8,7 +8,8 @@ After activating your virtual environment go to ``Notebook`` directory under `Nu
 ```
 pip install -r requirements.txt
 ```
-
+## Writing code 
+```Keep your jupyter notbook file inside Notebook directory```
 ## Notes on pushing notebook file in git 
 ``Jupyter notebook file creates conflict if push the notbook file with producesd output. To avoid this  clear the output in notbook. ``
 ```
