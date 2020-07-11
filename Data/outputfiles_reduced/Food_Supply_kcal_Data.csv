@@ -1,0 +1,7 @@
+,Methods,Input,Output,R^2 Score
+0,Linear Regression,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.1568189734847864
+1,Redge,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.13340085456136158
+2,Lasso,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.14569292967149777
+3,SVR,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.16699629210897207
+4,DecissionTree,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.1834775053269986
+5,RandomForest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Cereals - Excluding Beer', 'Oilcrops', 'Meat', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.24714891338343817
