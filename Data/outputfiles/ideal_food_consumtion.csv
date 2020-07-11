@@ -1,0 +1,5 @@
+,Nutrition Category,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']"
+0,Food_Supply_Quantity_kg_Data,"[0, 0, 0, 1]","[0.4420617236793843, 0.13076530409540074, 0.5579144138971044, 0.3955578905017301]"
+1,Fat_Supply_Quantity_Data,"[0, 0, 0, 1]","[0.5269269428219676, 0.23249715525730033, 0.4730760784670881, 0.389969916260956]"
+2,Food_Supply_kcal_Data,"[0, 0, 0, 1]","[0.4672009965706361, 0.15359162755182085, 0.5326745960321688, 0.42232611664871184]"
+3,Protein_Supply_Quantity_Data,"[0, 0, 0, 1]","[0.6413811485023138, 0.09672828808652183, 0.3584873705494411, 0.14035575012790616]"

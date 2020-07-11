@@ -1,0 +1,24 @@
+model_name,x_column,y_column,score
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Alcoholic Beverages,-0.0580057294546974
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Animal Products,0.3322856353248645
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Animal fats,0.14387069144396336
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","Aquatic Products, Other",-0.17337960589376977
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Cereals - Excluding Beer,0.31055175459518225
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Eggs,0.1817981291041001
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","Fish, Seafood",-0.07652610888017253
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Fruits - Excluding Wine,-0.2365526780017824
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Meat,0.16034772125600882
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Milk - Excluding Butter,0.13194757817610903
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Offals,0.01258894347624373
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Oilcrops,-2.2307540340375134
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Pulses,0.381203289003494
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Spices,-0.39534410555182253
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Starchy Roots,-0.6097758285382333
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Stimulants,-0.11356063537573591
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Sugar Crops,-0.2586976956422966
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Sugar & Sweeteners,-0.032239880087298056
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Treenuts,-0.029214321499094757
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Vegetal Products,0.36919922587425735
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Vegetable Oils,0.146054291767706
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Vegetables,0.04820578738801984
+Random Forest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']",Miscellaneous,-1.0602815929529852
