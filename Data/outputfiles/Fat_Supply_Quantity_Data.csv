@@ -1,0 +1,7 @@
+,Methods,Input,Output,R^2 Score
+0,Linear Regression,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.12422712708903336
+1,Redge,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.12467777607978994
+2,Lasso,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.12437569574307722
+3,SVR,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.11771854947121269
+4,DecissionTree,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",-0.09768638910948035
+5,RandomForest,"['Obesity', 'Undernourished', 'Deaths', 'Recovered']","['Animal Products', 'Animal fats', 'Vegetal Products', 'Vegetable Oils']",0.2466676235476319
