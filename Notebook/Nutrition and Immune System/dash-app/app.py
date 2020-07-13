@@ -88,10 +88,85 @@ app.layout = html.Div(children=[
                 dcc.Graph(
                     id="graph_tab_1_2"
                 ),
-            ])
+            ]),
+            html.Div([
+                html.P("Food Type:",
+                       style={'display': 'inline-block',
+                              'margin-left': '35px',
+                              'margin-top': '50px',
+                              'fontSize': 20})
+            ]),
+            html.Div(
+                [
+                    dcc.RadioItems(
+                        id="radio_pie",
+                        options=[
+                            {'label': 'Protein', 'value': 'Protine'},
+                            {'label': 'Fat', 'value': 'Fat'},
+                            {'label': 'KCal', 'value': 'KCal'},
+                            {'label': 'Quantity', 'value': 'Quantity'}
+                        ],
+                        value='Protine',
+                        labelStyle={'display': 'inline-block',
+                                    'margin-left': '5px',
+                                    'fontSize': 15}
+                    )], className="pretty_container six columns",
+            ),
+            html.Div([
+                html.Div(
+                    [
+                        html.P("Select 1st Country:", className="control_label_1"),
+                        dcc.Dropdown(
+                            id="Tab_1_dropdown_1",
+                            options=[
+                                {"label": country, "value": country}
+                                for country in hp.Fat_Supply_Quantity_Data['Country']
+                            ],
+                            value='Germany',
+                            clearable=False,
+                            multi=False
+                        )
 
+                    ],
+                    className="pretty_container six columns",
+                ),
+                html.Div(
+                    [
+                        html.P("Select 2nd Country:", className="control_label_2"),
+                        dcc.Dropdown(
+                            id="Tab_1_dropdown_2",
+                            options=[
+                                {"label": country, "value": country}
+                                for country in hp.Fat_Supply_Quantity_Data['Country']
+                            ],
+                            value='Germany',
+                            clearable=False,
+                            multi=False
+                        )
+
+                    ],
+                    className="pretty_container six columns",
+                ),
+            ],
+                style={
+                    "margin-top": "35px",
+                    "margin-left": "10px"
+                }),
+            html.Div([
+                html.Div([
+                    dcc.Graph(
+                        id="Tab_1_graph_3"
+                    )], className="pretty_container six columns",
+                ),
+                html.Div([
+                    dcc.Graph(
+                        id="Tab_1_graph_4"
+                    )], className="pretty_container six columns",
+                )])
         ]),
+
         dcc.Tab(label='Prediction', children=[
+
             html.Div([
                 html.Div([
                     html.P("Choose the nutrition/content:",
@@ -181,6 +256,24 @@ def update_figure_box_plot(Radio_foodType):
 
 
 @app.callback(
+    Output('Tab_1_graph_3', 'figure'),
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_1', 'value')])
+def pie_chart_1(radio, dropDown):
+    data = hp.pie_chart_1_for_app(dropDown, radio)
+    return data
+
+
+@app.callback(
+    Output('Tab_1_graph_4', 'figure'),
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_2', 'value')])
+def pie_chart_2(radio, dropDown):
+    data = hp.pie_chart_1_for_app(dropDown, radio)
+    return data
+
+
+@app.callback(
     Output('bar_chart_of_food_1', 'figure'),
     [Input('Radio_foodType_tab2', 'value'),
      Input('dropdown_country', 'value'),
@@ -235,6 +328,7 @@ def plot_barcahr_of_food(bar_chart_of_food_1, dropdown_country, number_of_output
 
         return fig
         # print(top8output)
+
 
 
 if __name__ == '__main__':
