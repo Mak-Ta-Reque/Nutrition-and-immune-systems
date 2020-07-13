@@ -10,6 +10,9 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+# Constants
+countries = hp.Fat_Supply_Quantity_Data['Country'].to_list()
+
 app.layout = html.Div(children=[
     dcc.Tabs([
         dcc.Tab(label='Tab one', children=[
@@ -46,7 +49,7 @@ app.layout = html.Div(children=[
                 id="Radio_differentFoods",
                 options=[
                     {'label': hp.column_names[i], 'value': hp.column_names[i]}
-                    for i in range(1,24)
+                    for i in range(1, 24)
                 ],
                 value='Alcoholic Beverages',
                 labelStyle={'display': 'inline-block',
@@ -84,15 +87,15 @@ app.layout = html.Div(children=[
                 ),
             ]),
             html.Div([
-                    html.P("Food Type:",
-                           style={'display': 'inline-block',
-                                  'margin-left': '35px',
-                                  'margin-top': '50px',
-                                  'fontSize': 20})
+                html.P("Food Type:",
+                       style={'display': 'inline-block',
+                              'margin-left': '35px',
+                              'margin-top': '50px',
+                              'fontSize': 20})
             ]),
             html.Div(
                 [
-                dcc.RadioItems(
+                    dcc.RadioItems(
                         id="radio_pie",
                         options=[
                             {'label': 'Protein', 'value': 'Protine'},
@@ -104,44 +107,44 @@ app.layout = html.Div(children=[
                         labelStyle={'display': 'inline-block',
                                     'margin-left': '5px',
                                     'fontSize': 15}
-                    )],className="pretty_container six columns",
+                    )], className="pretty_container six columns",
             ),
             html.Div([
-                    html.Div(
-                        [
-                            html.P("Select 1st Country:", className="control_label_1"),
-                            dcc.Dropdown(
-                                id="Tab_1_dropdown_1",
-                                options=[
-                                    {"label": country, "value": country}
-                                    for country in hp.Fat_Supply_Quantity_Data['Country']
-                                ],
-                                value='Germany',
-                                clearable=False,
-                                multi=False
-                            )
+                html.Div(
+                    [
+                        html.P("Select 1st Country:", className="control_label_1"),
+                        dcc.Dropdown(
+                            id="Tab_1_dropdown_1",
+                            options=[
+                                {"label": country, "value": country}
+                                for country in hp.Fat_Supply_Quantity_Data['Country']
+                            ],
+                            value='Germany',
+                            clearable=False,
+                            multi=False
+                        )
 
-                        ],
-                        className="pretty_container six columns",
-                    ),
-                    html.Div(
-                        [
-                            html.P("Select 2nd Country:", className="control_label_2"),
-                            dcc.Dropdown(
-                                id="Tab_1_dropdown_2",
-                                options=[
-                                    {"label": country, "value": country}
-                                    for country in hp.Fat_Supply_Quantity_Data['Country']
-                                ],
-                                value='Germany',
-                                clearable=False,
-                                multi=False
-                            )
+                    ],
+                    className="pretty_container six columns",
+                ),
+                html.Div(
+                    [
+                        html.P("Select 2nd Country:", className="control_label_2"),
+                        dcc.Dropdown(
+                            id="Tab_1_dropdown_2",
+                            options=[
+                                {"label": country, "value": country}
+                                for country in hp.Fat_Supply_Quantity_Data['Country']
+                            ],
+                            value='Germany',
+                            clearable=False,
+                            multi=False
+                        )
 
-                        ],
-                        className="pretty_container six columns",
-                    ),
-                ],
+                    ],
+                    className="pretty_container six columns",
+                ),
+            ],
                 style={
                     "margin-top": "35px",
                     "margin-left": "10px"
@@ -160,6 +163,44 @@ app.layout = html.Div(children=[
         ]),
         dcc.Tab(label='Tab two', children=[
 
+            html.Div([
+                html.Div([
+                    html.P("Choose the nutrition/content:",
+                           style={'display': 'inline-block',
+                                  'margin-left': '35px',
+                                  'margin-top': '50px',
+                                  'fontSize': 20})])
+            ]),
+
+            html.Div([dcc.RadioItems(
+                id="Radio_foodType_tab2",
+                options=[
+                    {'label': 'Protein', 'value': 'Protein_Supply_Quantity_Data'},
+                    {'label': 'Fat', 'value': 'Fat_Supply_Quantity_Data'},
+                    {'label': 'KCal', 'value': 'Food_Supply_kcal_Data'},
+                    {'label': 'Quantity', 'value': 'Food_Supply_Quantity_kg_Data'}
+                ],
+                value='Protine',
+                labelStyle={'display': 'inline-block',
+                            'margin-left': '30px',
+                            'margin-bottom': '-100px',
+                            'fontSize': 15}
+            )]),
+            html.Div([
+                dcc.Dropdown(
+                    id='dropdown_country',
+                    options=[
+                        {'label': i, 'value': i}
+                        for i in countries
+                    ],
+                    value='Germany'
+                )]),
+
+            html.Div([
+                dcc.Graph(
+                    id="bar_chart_of_food_1"
+                ),
+            ])
         ]),
         dcc.Tab(label='Tab three', children=[
             dcc.Graph(
@@ -199,21 +240,28 @@ def update_figure_box_plot(Radio_foodType):
 
 @app.callback(
     Output('Tab_1_graph_3', 'figure'),
-    [Input('radio_pie','value'),
-    Input('Tab_1_dropdown_1', 'value')])
-def pie_chart_1(radio,dropDown):
-    data=hp.pie_chart_1_for_app(dropDown,radio)
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_1', 'value')])
+def pie_chart_1(radio, dropDown):
+    data = hp.pie_chart_1_for_app(dropDown, radio)
     return data
+
 
 @app.callback(
     Output('Tab_1_graph_4', 'figure'),
-    [Input('radio_pie','value'),
-    Input('Tab_1_dropdown_2', 'value')])
-def pie_chart_2(radio,dropDown):
-    data=hp.pie_chart_1_for_app(dropDown,radio)
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_2', 'value')])
+def pie_chart_2(radio, dropDown):
+    data = hp.pie_chart_1_for_app(dropDown, radio)
     return data
 
 
+@app.callback(
+    Output('bar_chart_of_food_1', 'figure'),
+    [Input('Radio_foodType_tab2', 'value'),
+     Input('dropdown_country', 'value')])
+def plot_barcahr_of_food(bar_chart_of_food_1, dropdown_country):
+    pass
 
 
 if __name__ == '__main__':
