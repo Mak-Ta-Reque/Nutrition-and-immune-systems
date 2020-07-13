@@ -10,6 +10,9 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+# Constants
+countries = hp.Fat_Supply_Quantity_Data['Country'].to_list()
+
 app.layout = html.Div(children=[
     dcc.Tabs([
         dcc.Tab(label='Tab one', children=[
@@ -86,16 +89,44 @@ app.layout = html.Div(children=[
 
         ]),
         dcc.Tab(label='Tab two', children=[
-            dcc.Graph(
-                figure={
-                    'data': [
-                        {'x': [1, 2, 3], 'y': [1, 4, 1],
-                         'type': 'bar', 'name': 'SF'},
-                        {'x': [1, 2, 3], 'y': [1, 2, 3],
-                         'type': 'bar', 'name': u'Montréal'},
-                    ]
-                }
-            )
+            html.Div([
+                html.Div([
+                    html.P("Choose the nutrition/content:",
+                           style={'display': 'inline-block',
+                                  'margin-left': '35px',
+                                  'margin-top': '50px',
+                                  'fontSize': 20})])
+            ]),
+
+            html.Div([dcc.RadioItems(
+                id="Radio_foodType_tab2",
+                options=[
+                    {'label': 'Protein', 'value': 'Protein_Supply_Quantity_Data'},
+                    {'label': 'Fat', 'value': 'Fat_Supply_Quantity_Data'},
+                    {'label': 'KCal', 'value': 'Food_Supply_kcal_Data'},
+                    {'label': 'Quantity', 'value': 'Food_Supply_Quantity_kg_Data'}
+                ],
+                value='Protine',
+                labelStyle={'display': 'inline-block',
+                            'margin-left': '30px',
+                            'margin-bottom': '-100px',
+                            'fontSize': 15}
+            )]),
+            html.Div([
+                dcc.Dropdown(
+                    id='dropdown_country',
+                    options=[
+                        {'label': i, 'value': i}
+                        for i in countries
+                    ],
+                    value='Germany'
+                )]),
+
+            html.Div([
+                dcc.Graph(
+                    id="bar_chart_of_food_1"
+                ),
+            ])
         ]),
         dcc.Tab(label='Tab three', children=[
             dcc.Graph(
@@ -123,6 +154,7 @@ def update_figure_scatter_plot(Radio_foodType, Radio_differentFoods, Radio_Outpu
     data = hp.scatter_plot_tab_1(Radio_foodType, Radio_differentFoods, Radio_Output)
     return data
 
+
 # def update_figure Bar
 @app.callback(
     Output('graph_tab_1_2', 'figure'),
@@ -130,6 +162,14 @@ def update_figure_scatter_plot(Radio_foodType, Radio_differentFoods, Radio_Outpu
 def update_figure_box_plot(Radio_foodType):
     data = hp.box_plot_tab_1(Radio_foodType)
     return data
+
+
+@app.callback(
+    Output('bar_chart_of_food_1', 'figure'),
+    [Input('Radio_foodType_tab2', 'value'),
+    Input('dropdown_country', 'value')])
+def plot_barcahr_of_food(bar_chart_of_food_1, dropdown_country):
+    pass
 
 
 if __name__ == '__main__':
