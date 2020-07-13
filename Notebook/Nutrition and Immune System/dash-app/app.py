@@ -1,6 +1,5 @@
 # import plotly.express as px
 import dash
-import plotly.graph_objects as go
 # , State, ClientsideFunction
 import dash_core_components as dcc
 import dash_html_components as html
@@ -18,7 +17,7 @@ countries = hp.Fat_Supply_Quantity_Data['Country'].to_list()
 
 app.layout = html.Div(children=[
     dcc.Tabs([
-        dcc.Tab(label='Tab one', children=[
+        dcc.Tab(label='Data visualization', children=[
             html.Div([
                 html.Div([
                     html.P("Food Type:",
@@ -190,7 +189,10 @@ app.layout = html.Div(children=[
                             'margin-bottom': '-100px',
                             'fontSize': 15}
             )]),
+
+
             html.Div([
+                html.P("Please select a country for which you want to produce food", className="control_label_2"),
                 dcc.Dropdown(
                     id='dropdown_country',
                     options=[
@@ -219,18 +221,7 @@ app.layout = html.Div(children=[
                 ),
             ])
         ]),
-        dcc.Tab(label='Tab three', children=[
-            dcc.Graph(
-                figure={
-                    'data': [
-                        {'x': [1, 2, 3], 'y': [2, 4, 3],
-                         'type': 'bar', 'name': 'SF'},
-                        {'x': [1, 2, 3], 'y': [5, 4, 3],
-                         'type': 'bar', 'name': u'Montréal'},
-                    ]
-                }
-            )
-        ]),
+
     ])
 ])
 
@@ -280,54 +271,9 @@ def pie_chart_2(radio, dropDown):
      Input('number_of_output', 'value')
      ])
 def plot_barcahr_of_food(bar_chart_of_food_1, dropdown_country, number_of_output):
-    from utils import NutritionData
-    # print(os.path.join('data', bar_chart_of_food_1+'.csv'))
-    df = NutritionData(os.path.join('data', bar_chart_of_food_1 + '.csv')).data_frame
-    # print(df.head())
-    df_country = df.loc[dropdown_country]
+    from tab2plots import plot_barcahr_of_food as bar_plot
+    return bar_plot(bar_chart_of_food_1, dropdown_country, number_of_output)
 
-    # print(df_country)
-
-    scalar_model = os.path.join('data/models',
-                                os.path.join(number_of_output,
-                                             bar_chart_of_food_1 + '_scalar.pkl'))
-    # print(scalar_model)
-    main_model = os.path.join('data/models',
-                              os.path.join(number_of_output,
-                                           bar_chart_of_food_1 + '.pkl'))
-    # print(main_model)
-    if os.path.exists(scalar_model) and os.path.exists(main_model):
-        from utils import predict
-        from utils import top8output
-        from utils import top23output
-        output = predict(scalar_model, main_model, [[0, 0, 0, 1, 0.5, 0.5]])[0]
-        if number_of_output == '8output':
-            output_label = top8output
-
-        else:
-            output_label = top23output
-
-        df_country_filtered = df_country[output_label]
-        df_country_filtered = df_country_filtered.reset_index(drop=True).to_list()
-        fig = go.Figure([
-            go.Bar(name='Predicted (For high immunity)', x=output_label, y=output),
-            go.Bar(name=dropdown_country, x=output_label, y=df_country_filtered)
-        ])
-
-        fig.update_layout(
-            barmode='group',
-            title="Food habit of total population ",
-            yaxis_title="Population(%)",
-            xaxis_title="Food item",
-            font=dict(
-                family="Courier New, monospace",
-                size=12,
-                color="RebeccaPurple"
-            )
-        )
-
-        return fig
-        # print(top8output)
 
 
 
