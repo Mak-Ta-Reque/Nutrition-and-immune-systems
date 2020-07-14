@@ -8,12 +8,12 @@ from dash.dependencies import Input, Output
 import flask
 
 
-server = flask.Flask(__name__)
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=server)
-
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 # Constants
 countries = hp.Fat_Supply_Quantity_Data['Country'].to_list()
 
