@@ -163,6 +163,17 @@ app.layout = html.Div(children=[
                     dcc.Graph(
                         id="Tab_1_graph_4"
                     )], className="pretty_container six columns",
+                )]),
+                        html.Div([
+                html.Div([
+                    dcc.Graph(
+                        id="Tab_1_graph_5"
+                    )], className="pretty_container six columns",
+                ),
+                html.Div([
+                    dcc.Graph(
+                        id="Tab_1_graph_6"
+                    )], className="pretty_container six columns",
                 )])
         ]),
 
@@ -253,7 +264,7 @@ def update_figure_box_plot(Radio_foodType):
     [Input('radio_pie', 'value'),
      Input('Tab_1_dropdown_1', 'value')])
 def pie_chart_1(radio, dropDown):
-    data = hp.pie_chart_1_for_app(dropDown, radio)
+    data = hp.pie_chart_1_and_2_for_app(dropDown, radio)
     return data
 
 
@@ -262,7 +273,24 @@ def pie_chart_1(radio, dropDown):
     [Input('radio_pie', 'value'),
      Input('Tab_1_dropdown_2', 'value')])
 def pie_chart_2(radio, dropDown):
-    data = hp.pie_chart_1_for_app(dropDown, radio)
+    data = hp.pie_chart_1_and_2_for_app(dropDown, radio)
+    return data
+
+@app.callback(
+    Output('Tab_1_graph_5', 'figure'),
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_1', 'value')])
+def pie_chart_3(radio, dropDown):
+    data = hp.pie_chart_3_and_4_for_app(dropDown, radio)
+    return data
+
+
+@app.callback(
+    Output('Tab_1_graph_6', 'figure'),
+    [Input('radio_pie', 'value'),
+     Input('Tab_1_dropdown_2', 'value')])
+def pie_chart_4(radio, dropDown):
+    data = hp.pie_chart_3_and_4_for_app(dropDown, radio)
     return data
 
 
