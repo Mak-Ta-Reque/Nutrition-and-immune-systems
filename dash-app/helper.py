@@ -113,10 +113,10 @@ def box_plot_tab_1(Radio_foodType):
     return figure
 
 
-""" Tab 1 Finished"""
 
 
-def pie_chart(dropDown,dff):
+
+def pie_chart_function_for_1_and_2(dropDown,dff):
     group = dff.groupby("Country")
     getGroup = group.get_group(dropDown)
     x = getGroup.T
@@ -132,20 +132,56 @@ def pie_chart(dropDown,dff):
     return figure
 
 
-def pie_chart_1_for_app(dropDown, Radio_foodType):
+def pie_chart_1_and_2_for_app(dropDown, Radio_foodType):
     figure = None
     if Radio_foodType == "Protine":
         dff = Protein_Supply_Quantity_Data
-        figure = pie_chart(dropDown,dff)
+        figure = pie_chart_function_for_1_and_2(dropDown,dff)
     elif Radio_foodType == "Fat":
         dff = Fat_Supply_Quantity_Data
-        figure = pie_chart(dropDown,dff)
+        figure = pie_chart_function_for_1_and_2(dropDown,dff)
     elif Radio_foodType == "KCal":
         dff = Food_Supply_kcal_Data
-        figure = pie_chart(dropDown,dff)
+        figure = pie_chart_function_for_1_and_2(dropDown,dff)
     elif Radio_foodType == "Quantity":
         dff = Food_Supply_Quantity_kg_Data
-        figure = pie_chart(dropDown,dff)
+        figure = pie_chart_function_for_1_and_2(dropDown,dff)
     else:
         pass
     return figure
+
+def pie_chart_function_for_3_and_4(dropDown,dff):
+    group = dff.groupby("Country")
+    getGroup = group.get_group(dropDown)
+    x = getGroup.T
+    y = []
+    z = []
+    for each in x.index[24:30]:
+        y.append(each)
+    for each in x.iloc[24:30, 0]:
+        z.append(each)
+    d = {'Name': y, 'Values': z}
+    df = pd.DataFrame(d)
+    figure = px.pie(df, values='Values', names='Name')
+    return figure
+
+
+def pie_chart_3_and_4_for_app(dropDown, Radio_foodType):
+    figure = None
+    if Radio_foodType == "Protine":
+        dff = Protein_Supply_Quantity_Data
+        figure = pie_chart_function_for_3_and_4(dropDown,dff)
+    elif Radio_foodType == "Fat":
+        dff = Fat_Supply_Quantity_Data
+        figure = pie_chart_function_for_3_and_4(dropDown,dff)
+    elif Radio_foodType == "KCal":
+        dff = Food_Supply_kcal_Data
+        figure = pie_chart_function_for_3_and_4(dropDown,dff)
+    elif Radio_foodType == "Quantity":
+        dff = Food_Supply_Quantity_kg_Data
+        figure = pie_chart_function_for_3_and_4(dropDown,dff)
+    else:
+        pass
+    return figure
+
+""" Tab 1 Finished"""
