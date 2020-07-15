@@ -237,12 +237,20 @@ app.layout = html.Div(children=[
                 value='Protein_Supply_Quantity_Data',
                 labelStyle={'display': 'inline-block',
                             'margin-left': '30px',
-                            'margin-bottom': '-100px',
+                            'margin-top': '10px',
+                            'margin-bottom': '10px',
+                            # 'margin-bottom': '-100px',
                             'fontSize': 15}
             )]),
 
             html.Div([
-                html.P("Please select a country for which you want to produce food", className="control_label_2"),
+                html.P("Please select a country for which you want to produce food:", className="control_label_2",
+                    style={'display': 'inline-block',
+                            'margin-left': '35px',
+                            'margin-top': '10px',
+                            'margin-bottom': '10px',
+                            # 'margin-bottom': '-100px',
+                            'fontSize': 20}),
                 dcc.Dropdown(
                     id='dropdown_country',
                     options=[
@@ -255,12 +263,13 @@ app.layout = html.Div(children=[
             html.Div([dcc.RadioItems(
                 id="number_of_output",
                 options=[
-                    {'label': 'All output', 'value': '23output'},
-                    {'label': 'Top 8', 'value': '8output'},
+                    {'label': 'All type of foods', 'value': '23output'},
+                    {'label': 'Top 8 foods', 'value': '8output'},
                 ],
                 value='8output',
                 labelStyle={'display': 'inline-block',
                             'margin-left': '30px',
+                            'margin-top': '20px',
                             'margin-bottom': '-100px',
                             'fontSize': 15}
             )]),
