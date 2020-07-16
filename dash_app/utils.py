@@ -6,7 +6,7 @@ import numpy as np
 
 # Define Input of model
 INPUT = ['Obesity', 'Undernourished', 'Deaths', 'Recovered', 'Active', 'Confirmed']
-OUTPUT =['Animal Products', 'Animal fats', 'Meat', 'Cereals - Excluding Beer','Vegetables','Vegetal Products','Vegetable Oils', 'Oilcrops' ]
+OUTPUT = ['Animal Products', 'Animal fats', 'Meat', 'Cereals - Excluding Beer','Vegetables','Vegetal Products','Vegetable Oils', 'Oilcrops' ]
 '''['Alcoholic Beverages', 'Animal Products', 'Animal fats',
           'Aquatic Products, Other', 'Cereals - Excluding Beer', 'Eggs',
           'Fish, Seafood', 'Fruits - Excluding Wine', 'Meat',
@@ -23,7 +23,8 @@ top23output = ['Alcoholic Beverages', 'Animal Products', 'Animal fats',
           'Starchy Roots', 'Stimulants', 'Sugar Crops', 'Sugar & Sweeteners',
           'Treenuts', 'Vegetal Products', 'Vegetable Oils', 'Vegetables',
           'Miscellaneous']
-# data_file_dir = 'data'
+
+DATA_PATH = 'data'
 
 
 # dataset class preprocess the data
@@ -118,6 +119,7 @@ class NutritionModel:
     def split_data(self, test_size=0.2, random_state=42):
         # splits the dataset in train and test set
         self.train_set, self.test_set = train_test_split(self.dataset, test_size=test_size, random_state=42)
+
 
     def set_model(self, model):
         # setting up the model
