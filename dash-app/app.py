@@ -5,10 +5,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 import helper as hp
 from dash.dependencies import Input, Output
-import flask
-
-
-
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -17,12 +13,46 @@ server = app.server
 # Constants
 countries = hp.Fat_Supply_Quantity_Data['Country'].to_list()
 
+app.title = "Nutrition and Immune System"
+
 app.layout = html.Div(children=[
+    html.Div([
+        html.P("Nutration and Immune System",
+               style={
+                   'display': 'center',
+                   # 'margin-left': '100px',
+                   # 'margin-top': '50px',
+                   'text-align': 'center',
+                   'fontSize': 40
+               },
+               ),
+        html.P(["The purpose of this software is to compare different food products"
+                " consumption in ideal situation (requirement for boosting immunity)"
+                "and current situation of different countries in this time of COVID-19 pandemic."
+                   , html.Br(),
+                " In 'Data Visualization' page, we can find out the correlation between different food item"
+                " with the correlation of different health condition. Also user can compare"
+                " between two countries about their percentage of different type of food having and"
+                " health condition depending on their food habit.", html.Br(),
+                "In the 'Prediction' page is the prediction of different countries"
+                " current food consumption and what type of food should they add more"
+                " or decrease from their eating menu depending upon their different health"
+                " condition."],
+               style={
+                   'display': 'inline-block',
+                   'margin-left': '20px',
+                   # 'margin-top': '50px',
+                   'text-align': 'left',
+                   'fontSize': 20,
+                   'margin-bottom': '20px'
+               }
+               )
+    ]),
     dcc.Tabs([
-        dcc.Tab(label='Data visualization', children=[
+        dcc.Tab(label='Data Visualization', children=[
             html.Div([
                 html.Div([
-                    html.P("Food Type:",
+                    html.P("Choose the type of Nutrition Content and Calorie Consumption you want to check:",
                            style={'display': 'inline-block',
                                   'margin-left': '35px',
                                   'margin-top': '50px',
@@ -43,7 +73,7 @@ app.layout = html.Div(children=[
                             'fontSize': 15}
             )]),
             html.Div([
-                html.P("Different Foods:",
+                html.P("Choose different type foods items:",
                        style={'display': 'inline-block',
                               'margin-left': '35px',
                               'margin-top': '50px',
@@ -62,7 +92,7 @@ app.layout = html.Div(children=[
                             'fontSize': 15}
             )]),
             html.Div([
-                html.P("Output:",
+                html.P("General Health Condition:",
                        style={'display': 'inline-block',
                               'margin-left': '35px',
                               'margin-top': '50px',
@@ -71,8 +101,16 @@ app.layout = html.Div(children=[
             html.Div([dcc.RadioItems(
                 id="Radio_Output",
                 options=[
-                    {'label': hp.column_names[i], 'value': hp.column_names[i]}
-                    for i in range(24, 30)
+                    # {'label': hp.column_names[i], 'value': hp.column_names[i]}
+                    # for i in range(24, 30)
+
+                    {'label': "Obesity", "value": "Obesity"},
+                    {'label': "Undernourished", "value": "Undernourished"},
+                    {'label': "Covid-19 Confirmed Cases", "value": "Confirmed"},
+                    {'label': "Covid-19 Death Cases", "value": "Deaths"},
+                    {'label': "Recovered from Covid-19", "value": "Recovered"},
+                    {'label': "Covid-19 Active Cases", "value": "Active"}
+
                 ],
                 value='Obesity',
                 labelStyle={'display': 'inline-block',
@@ -164,7 +202,7 @@ app.layout = html.Div(children=[
                         id="Tab_1_graph_4"
                     )], className="pretty_container six columns",
                 )]),
-                        html.Div([
+            html.Div([
                 html.Div([
                     dcc.Graph(
                         id="Tab_1_graph_5"
@@ -181,7 +219,7 @@ app.layout = html.Div(children=[
 
             html.Div([
                 html.Div([
-                    html.P("Choose the nutrition/content:",
+                    html.P("Choose the type of Nutrition Content and Calorie Consumption you want to check:",
                            style={'display': 'inline-block',
                                   'margin-left': '35px',
                                   'margin-top': '50px',
@@ -199,13 +237,20 @@ app.layout = html.Div(children=[
                 value='Protein_Supply_Quantity_Data',
                 labelStyle={'display': 'inline-block',
                             'margin-left': '30px',
-                            'margin-bottom': '-100px',
+                            'margin-top': '10px',
+                            'margin-bottom': '10px',
+                            # 'margin-bottom': '-100px',
                             'fontSize': 15}
             )]),
 
-
             html.Div([
-                html.P("Please select a country for which you want to produce food", className="control_label_2"),
+                html.P("Please select a country for which you want to produce food:", className="control_label_2",
+                    style={'display': 'inline-block',
+                            'margin-left': '35px',
+                            'margin-top': '10px',
+                            'margin-bottom': '10px',
+                            # 'margin-bottom': '-100px',
+                            'fontSize': 20}),
                 dcc.Dropdown(
                     id='dropdown_country',
                     options=[
@@ -218,12 +263,13 @@ app.layout = html.Div(children=[
             html.Div([dcc.RadioItems(
                 id="number_of_output",
                 options=[
-                    {'label': 'All output', 'value': '23output'},
-                    {'label': 'Top 8', 'value': '8output'},
+                    {'label': 'All type of foods', 'value': '23output'},
+                    {'label': 'Top 8 foods', 'value': '8output'},
                 ],
                 value='8output',
                 labelStyle={'display': 'inline-block',
                             'margin-left': '30px',
+                            'margin-top': '20px',
                             'margin-bottom': '-100px',
                             'fontSize': 15}
             )]),
@@ -232,6 +278,22 @@ app.layout = html.Div(children=[
                 dcc.Graph(
                     id="bar_chart_of_food_1"
                 ),
+            ]),
+            html.Div([
+                html.P(["In the upper plot, blue bar represents the perfect amount of"
+                        " food the selected country should eat to have a good immune system"
+                        " and the red bar represents the amount of food they are eating now."
+                        " Here the goal is that the red bar is in equal height with the blue bar for different foods to get better immune system."
+                        " So, from here, we can easily decide which type of food should we add"
+                        " more to menu and cut from the menu for having a better immune system in"
+                        " this challenging time of COVID-19 pandemic."],
+                    style={
+                   'display': 'inline-block',
+                   'margin-top': '30px',
+                   'margin-left': '20px',
+                   'text-align': 'left',
+                   'fontSize': 20,
+               })
             ])
         ]),
 
@@ -276,6 +338,7 @@ def pie_chart_2(radio, dropDown):
     data = hp.pie_chart_1_and_2_for_app(dropDown, radio)
     return data
 
+
 @app.callback(
     Output('Tab_1_graph_5', 'figure'),
     [Input('radio_pie', 'value'),
@@ -303,8 +366,6 @@ def pie_chart_4(radio, dropDown):
 def plot_barcahr_of_food(bar_chart_of_food_1, dropdown_country, number_of_output):
     from tab2plots import plot_barcahr_of_food as bar_plot
     return bar_plot(bar_chart_of_food_1, dropdown_country, number_of_output)
-
-
 
 
 if __name__ == '__main__':
