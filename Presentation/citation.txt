@@ -1,0 +1,13 @@
+1: https://en.wikipedia.org/wiki/Immune_system
+
+2: https://www.webmd.com/cold-and-flu/qa/does-your-diet-affect-your-immune-system
+
+3: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6723551/
+
+4: https://doi.org/10.1186/s13601-020-00323-0
+
+5: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7314342/
+
+6: https://www.sciencedirect.com/science/article/pii/S0889159120305377
+
+7: https://www.kaggle.com/mariaren/covid19-healthy-diet-dataset
