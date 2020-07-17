@@ -43,8 +43,9 @@ jupyter==1.0.0
 jupyter-client==6.1.3
 jupyter-console==6.1.0
 jupyter-core==4.6.3
-Keras==2.4.3
-Keras-Preprocessing==1.1.2
+# Uncomment if you want to use NN
+#Keras==2.4.3
+#Keras-Preprocessing==1.1.2
 kiwisolver==1.2.0
 Markdown==3.2.2
 MarkupSafe==1.1.1
@@ -89,10 +90,11 @@ seaborn==0.10.1
 Send2Trash==1.5.0
 six==1.15.0
 statsmodels==0.11.1
-tensorboard==2.2.2
-tensorboard-plugin-wit==1.7.0
-tensorflow==2.2.0
-tensorflow-estimator==2.2.0
+# Uncomment if you want to use NN
+#tensorboard==2.2.2
+#tensorboard-plugin-wit==1.7.0
+#tensorflow==2.2.0
+#tensorflow-estimator==2.2.0
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
