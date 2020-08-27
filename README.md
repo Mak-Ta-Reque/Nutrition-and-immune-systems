@@ -1,5 +1,5 @@
 # Nutrition-and-immune-systems
-Predicting Nutrition Requirements to Boost Immune System - Kaggle Covid-19 healthy diet Dataset
+Predicting Nutrition Requirements to Boost Immune System - Kaggle Covid-19 healthy diet Dataset. 
 This repository is for data science project
 
 
